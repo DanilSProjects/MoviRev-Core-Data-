@@ -17,7 +17,8 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var detailViewController: ReviewsViewController? = nil
 
     func configureView() {
-        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        navigationItem.rightBarButtonItem = addButton
         if let movie = movie {
             self.title = "\(movie.name!)(\(movie.year))"
         }
@@ -161,5 +162,44 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
      }
      */
 
+    @objc
+    func insertNewObject(_ sender: Any) {
+        let alert = UIAlertController(title: "Add New Review", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Review Rating (1 to 5)"
+            textField.keyboardType = UIKeyboardType.numberPad
+            
+        })
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Review Description"
+            
+        })
+        
+        let confirmAction = UIAlertAction(title: "Add", style: .default) { (action) in
+            let context = self.fetchedResultsController.managedObjectContext
+            let newReview = Review(context: context)
+            
+            // If appropriate, configure the new managed object.
+            newReview.timestamp = Date()
+            newReview.body = alert.textFields![1].text
+            newReview.rating = Int16(alert.textFields![0].text!)!
+            
+            // Save the context.
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            
+        }
+        alert.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
 }
 
