@@ -101,6 +101,11 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
+        // Filter for current movie
+        
+        let predicate = NSPredicate(format: "movie.name = %@", movie!.name!)
+        fetchRequest.predicate = predicate
+        
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
@@ -183,6 +188,7 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
             newReview.timestamp = Date()
             newReview.body = alert.textFields![1].text
             newReview.rating = Int16(alert.textFields![0].text!)!
+            newReview.movie = self.movie
             
             // Save the context.
             do {
