@@ -45,7 +45,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
              
         // If appropriate, configure the new managed object.
         newMovie.timestamp = Date()
-
+        newMovie.name = "Citizen Kane"
+        newMovie.year = 1941
+        
         // Save the context.
         do {
             try context.save()
@@ -85,7 +87,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let movie = fetchedResultsController.object(at: indexPath)
-        configureCell(cell, withEvent: movie)
+        configureCell(cell, withMovie: movie)
         return cell
     }
 
@@ -110,8 +112,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
 
-    func configureCell(_ cell: UITableViewCell, withEvent movie: Movie) {
-        cell.textLabel!.text = movie.timestamp!.description
+    func configureCell(_ cell: UITableViewCell, withMovie movie: Movie) {
+        cell.textLabel!.text = movie.name!
+        cell.detailTextLabel!.text = "\(movie.year)"
     }
 
     // MARK: - Fetched results controller
@@ -172,9 +175,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             case .delete:
                 tableView.deleteRows(at: [indexPath!], with: .fade)
             case .update:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withEvent: anObject as! Movie)
+                configureCell(tableView.cellForRow(at: indexPath!)!, withMovie: anObject as! Movie)
             case .move:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withEvent: anObject as! Movie)
+                configureCell(tableView.cellForRow(at: indexPath!)!, withMovie: anObject as! Movie)
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
         }
     }
