@@ -91,6 +91,8 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
             return _fetchedResultsController!
         }
         
+        NSFetchedResultsController<Review>.deleteCache(withName: "Master")
+        
         let fetchRequest: NSFetchRequest<Review> = Review.fetchRequest()
         
         // Set the batch size to a suitable number.
@@ -98,12 +100,11 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Edit the sort key as appropriate.
         let sortDescriptor = NSSortDescriptor(key: "rating", ascending: false)
-        
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         // Filter for current movie
         
-        let predicate = NSPredicate(format: "movie.name = %@", movie!.name!)
+        let predicate = NSPredicate(format: "movie == %@", movie!)
         fetchRequest.predicate = predicate
         
         // Edit the section name key path and cache name if appropriate.
@@ -189,6 +190,7 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
             newReview.body = alert.textFields![1].text
             newReview.rating = Int16(alert.textFields![0].text!)!
             newReview.movie = self.movie
+            self.movie?.addToReviews(newReview)
             
             // Save the context.
             do {
