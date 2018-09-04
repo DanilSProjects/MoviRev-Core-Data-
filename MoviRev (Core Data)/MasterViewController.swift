@@ -40,13 +40,25 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     @objc
     func insertNewObject(_ sender: Any) {
+        let alert = UIAlertController(title: "Add New Movie", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Movie Title"
+            
+            
+        })
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Movie Year"
+            textField.keyboardType = UIKeyboardType.numberPad
+        })
+        
+        let confirmAction = UIAlertAction(title: "Add", style: .default) { (action) in
         let context = self.fetchedResultsController.managedObjectContext
         let newMovie = Movie(context: context)
-             
+        
         // If appropriate, configure the new managed object.
         newMovie.timestamp = Date()
-        newMovie.name = "Citizen Kane"
-        newMovie.year = 1941
+        newMovie.name = alert.textFields![0].text
+        newMovie.year = Int16(alert.textFields![1].text!)!
         
         // Save the context.
         do {
@@ -56,8 +68,17 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            
         }
+        alert.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
     }
+    
+
 
     // MARK: - Segues
 
