@@ -97,7 +97,7 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
         fetchRequest.fetchBatchSize = 20
         
         // Edit the sort key as appropriate.
-        let sortDescriptor = NSSortDescriptor(key: "rating", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "rating", ascending: false)
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
