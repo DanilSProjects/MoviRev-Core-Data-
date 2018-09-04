@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class MoviesViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    var detailViewController: DetailViewController? = nil
+    var detailViewController: ReviewsViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
 
 
@@ -24,7 +24,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? ReviewsViewController
         }
     }
 
@@ -86,7 +86,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
             let object = fetchedResultsController.object(at: indexPath)
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                let controller = (segue.destination as! UINavigationController).topViewController as! ReviewsViewController
                 controller.movie = object
                 controller.managedObjectContext = managedObjectContext
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem

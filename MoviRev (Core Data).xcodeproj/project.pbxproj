@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		65F86159213E1B99002FE640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F86158213E1B99002FE640 /* AppDelegate.swift */; };
 		65F8615C213E1B99002FE640 /* MoviRev__Core_Data_.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65F8615A213E1B99002FE640 /* MoviRev__Core_Data_.xcdatamodeld */; };
-		65F8615E213E1B99002FE640 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8615D213E1B99002FE640 /* MasterViewController.swift */; };
-		65F86160213E1B99002FE640 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8615F213E1B99002FE640 /* DetailViewController.swift */; };
+		65F8615E213E1B99002FE640 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8615D213E1B99002FE640 /* MoviesViewController.swift */; };
+		65F86160213E1B99002FE640 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8615F213E1B99002FE640 /* ReviewsViewController.swift */; };
 		65F86163213E1B99002FE640 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F86161213E1B99002FE640 /* Main.storyboard */; };
 		65F86165213E1B9B002FE640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65F86164213E1B9B002FE640 /* Assets.xcassets */; };
 		65F86168213E1B9B002FE640 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F86166213E1B9B002FE640 /* LaunchScreen.storyboard */; };
@@ -20,8 +20,8 @@
 		65F86155213E1B99002FE640 /* MoviRev (Core Data).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MoviRev (Core Data).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F86158213E1B99002FE640 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65F8615B213E1B99002FE640 /* MoviRev__Core_Data_.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoviRev__Core_Data_.xcdatamodel; sourceTree = "<group>"; };
-		65F8615D213E1B99002FE640 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		65F8615F213E1B99002FE640 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		65F8615D213E1B99002FE640 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		65F8615F213E1B99002FE640 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		65F86162213E1B99002FE640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65F86164213E1B9B002FE640 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65F86167213E1B9B002FE640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,8 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				65F86158213E1B99002FE640 /* AppDelegate.swift */,
-				65F8615D213E1B99002FE640 /* MasterViewController.swift */,
-				65F8615F213E1B99002FE640 /* DetailViewController.swift */,
+				65F8615D213E1B99002FE640 /* MoviesViewController.swift */,
+				65F8615F213E1B99002FE640 /* ReviewsViewController.swift */,
 				65F86161213E1B99002FE640 /* Main.storyboard */,
 				65F86164213E1B9B002FE640 /* Assets.xcassets */,
 				65F86166213E1B9B002FE640 /* LaunchScreen.storyboard */,
@@ -143,8 +143,8 @@
 			files = (
 				65F8615C213E1B99002FE640 /* MoviRev__Core_Data_.xcdatamodeld in Sources */,
 				65F86159213E1B99002FE640 /* AppDelegate.swift in Sources */,
-				65F8615E213E1B99002FE640 /* MasterViewController.swift in Sources */,
-				65F86160213E1B99002FE640 /* DetailViewController.swift in Sources */,
+				65F8615E213E1B99002FE640 /* MoviesViewController.swift in Sources */,
+				65F86160213E1B99002FE640 /* ReviewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
